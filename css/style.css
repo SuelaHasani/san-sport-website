@@ -90,7 +90,16 @@ header nav li.active a {
 	margin-bottom: 12px;
 }
         
-        #about-intro, #about-mission {
+        #about-intro, #about-mission, #about-team {
+    text-align: center;
+}
+
+#about-intro a, #about-mission a, #about-team a {
+    display: inline-block;
+    text-align: center;
+}
+
+#about-intro, #about-mission {
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -141,6 +150,120 @@ header nav li.active a {
     }
 }
 
+.center-text .main-heading {
+    text-align: center;
+}
+
+.center-text .main-heading ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.center-text .main-heading a {
+    display: inline-block;
+    text-align: center;
+}
+  .dark-mode {
+    background-color: #0b132b;
+    color: #e6eef8;
+    transition: 0.3s;
+}
+
+.dark-mode header {
+    background: linear-gradient(180deg,#071021 0%, #0b1830 100%);
+}
+
+.dark-mode header nav li a {
+    color: #cfe7ff;
+}
+
+.dark-mode header nav li a:hover,
+.dark-mode header nav li.active a {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ensure main boxes, team cards and Bootstrap cards follow dark styling */
+.dark-mode .main-heading,
+.dark-mode .main-heading > div,
+.dark-mode .team-member,
+.dark-mode .card,
+.dark-mode .card-header,
+.dark-mode .card-body {
+    background: #071226;
+    border: 1px solid rgba(255,255,255,0.04);
+    color: #d9e8ff;
+    box-shadow: none;
+}
+
+/* headings and paragraph text in dark mode */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode p,
+.dark-mode .main-heading > div h1,
+.dark-mode .main-heading > div h2,
+.dark-mode .team-member h2,
+.dark-mode .team-member p {
+    color: #e6f3ff;
+}
+
+/* form controls and inputs */
+.dark-mode .form-control,
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background: #071a2a;
+    color: #e6eef8;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* buttons */
+.dark-mode .btn-primary {
+    background: #1b5f90;
+    border-color: #164f74;
+    color: #fff;
+}
+
+.dark-mode .btn,
+.dark-mode #theme-toggle {
+    background: rgba(255,255,255,0.02);
+    color: #d9e8ff;
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-mode a {
+    color: #9fd0ff;
+}
+
+.dark-mode a:hover {
+    color: #ffb6d5;
+}
+
+#theme-toggle {
+    background: transparent;
+    color: #dfe7ef;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 12px;
+}
+
+#theme-toggle:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.dark-mode #theme-toggle {
+    color: #d9e8ff;
+    border-color: rgba(255,255,255,0.06);
+}
+
+.dark-mode #theme-toggle:hover {
+    background: rgba(255,255,255,0.02);
+}
 
 
 
