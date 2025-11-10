@@ -30,7 +30,8 @@ body {
     width: 200px ;
     height: 200px ;
     display: block;
-    float: left;
+    float: top;
+    align-items: center;
 }
 .container header {
     display: flex;
