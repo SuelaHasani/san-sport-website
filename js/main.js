@@ -138,5 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    $(document).ready(function () {
+    let total = 0;
+
+    $(".add-btn").click(function () {
+        let item = $(this).closest('.item');
+        let name = item.data("name");
+        let price = parseFloat(item.data("price"));
+
+        $("#cart-list").append(`<li>${name} - $${price}</li>`);
+
+        total += price;
+        $("#total").text(total);
+    });
+});
+
 });
 

@@ -1,28 +1,67 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Shop</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Shop</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>My Shop</h1>
-    <div class="cart"> Cart (<span id="cart-count">0</span>)</div>
-  </header>
+   <div class="container">
+            <header>
+                <nav>
+                    <ul>
 
-  <main>
-    <div class="product-grid" id="product-list">
-        <
-      <!-- Products will be inserted here dynamically -->
+                        <li class="active"><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="conatct.html">CONTACT</a></li>
+                        <li><a href="slideshow.html">SLIDESHOW</a></li>
+                        <li><a href="shop.html">SHOP</a></li>
+                        <li><a href="login.html">LOGIN</a></li>
+                        
+
+                    </ul>
+                </nav>
+                <button id="theme-toggle" aria-pressed="false">Toggle Theme</button>
+            </header>
+
+    <div class="shop-container">
+        <div class="item" data-name="Real Madrid Jersey" data-price="90">
+            <img src="https://via.placeholder.com/250" alt="Real Madrid Jersey">
+            <h3>Real Madrid Jersey 2024</h3>
+            <p>Price: $90</p>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="item" data-name="Manchester City Jersey" data-price="85">
+            <img src="https://via.placeholder.com/250" alt="Manchester City Jersey">
+            <h3>Manchester City Home Jersey</h3>
+            <p>Price: $85</p>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="item" data-name="Red Bull Racing Jacket" data-price="150">
+            <img src="https://via.placeholder.com/250" alt="Red Bull Racing Jacket">
+            <h3>Red Bull Racing F1 Team Jacket</h3>
+            <p>Price: $150</p>
+            <button class="add-btn">Add to Cart</button>
+        </div>
+
+        <div class="item" data-name="Ferrari F1 Jacket" data-price="160">
+            <img src="https://via.placeholder.com/250" alt="Ferrari F1 Jacket">
+            <h3>Ferrari Scuderia Jacket</h3>
+            <p>Price: $160</p>
+            <button class="add-btn">Add to Cart</button>
+        </div>
     </div>
-  </main>
 
-  <footer>
-    <p>© 2025 My Shop</p>
-  </footer>
+    <div id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-list"></ul>
+        <p><strong>Total: $<span id="total">0</span></strong></p>
+        <button id="checkout-btn">Checkout</button>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
