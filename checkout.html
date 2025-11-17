@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout — San Sport Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand"><a href="index.html">San Sport</a></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="shop.html">SHOP</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="checkout-main">
+      <h1>Checkout</h1>
+
+      <section class="checkout-grid">
+        <aside class="checkout-cart">
+          <h2>Order Summary</h2>
+          <div id="checkout-items" class="checkout-items">
+            <!-- injected by JS -->
+          </div>
+
+          <div class="checkout-summary">
+            <div>Subtotal: <span id="subtotal">$0.00</span></div>
+            <div>Shipping: <span id="shipping">$0.00</span></div>
+            <div style="font-weight:700;">Total: <span id="grand-total">$0.00</span></div>
+          </div>
+        </aside>
+
+        <section class="checkout-form">
+          <h2>Billing & Shipping</h2>
+
+          <form id="checkout-form" novalidate>
+            <label>
+              Full name
+              <input type="text" name="name" id="name" required>
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" id="email" required>
+            </label>
+
+            <label>
+              Address
+              <input type="text" name="address" id="address" required>
+            </label>
+
+            <label>
+              City
+              <input type="text" name="city" id="city" required>
+            </label>
+
+            <label>
+              Postal Code
+              <input type="text" name="postal" id="postal" required>
+            </label>
+
+            <h3>Payment (simulated)</h3>
+            <label>
+              Cardholder name
+              <input type="text" id="card-name" required>
+            </label>
+            <label>
+              Card number
+              <input type="text" id="card-number" placeholder="4242 4242 4242 4242" required>
+            </label>
+            <div class="two-col">
+              <label>
+                Expiry
+                <input type="text" id="card-exp" placeholder="MM/YY" required>
+              </label>
+              <label>
+                CVC
+                <input type="text" id="card-cvc" placeholder="123" required>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="place-order" class="btn primary">Place Order</button>
+              <button type="button" id="cancel-order" class="btn muted">Cancel</button>
+            </div>
+          </form>
+
+          <div id="checkout-message" class="checkout-message" aria-live="polite" style="display:none;"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/checkout.js"></script>
+</body>
+</html>
