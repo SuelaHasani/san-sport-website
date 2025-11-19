@@ -1,25 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Theme toggle
-    const toggleBtn = document.getElementById('theme-toggle');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem('theme');
-    const initial = saved || (prefersDark ? 'dark' : 'light');
+/* Main site script
+   - Initializes UI behaviour that is used across pages (theme toggle, small helpers).
+   - This file is executed on DOMContentLoaded.
+*/
 
-    function applyTheme(theme) {
-        document.body.classList.toggle('dark-mode', theme === 'dark');
-        localStorage.setItem('theme', theme);
-        if (toggleBtn) {
-            toggleBtn.textContent = theme === 'dark' ? 'Bright Mode' : 'Dark Mode';
-            toggleBtn.setAttribute('aria-pressed', theme === 'dark');
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle button (switches .dark-mode on <body>)
+    const themeBtn = document.getElementById('theme-toggle');
+    // Read persisted theme from localStorage (so theme survives refresh)
+    const savedTheme = localStorage.getItem('san_sport_theme');
+
+    // Apply saved theme on load
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeBtn) themeBtn.setAttribute('aria-pressed', 'true');
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (themeBtn) themeBtn.setAttribute('aria-pressed', 'false');
     }
-    applyTheme(initial);
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-            applyTheme(newTheme);
+
+    // If toggle exists, wire click to flip theme and persist choice
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeBtn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem('san_sport_theme', isDark ? 'dark' : 'light');
         });
     }
+
+    // Accessibility: allow pressing "D" to toggle theme (useful for demos)
+    document.addEventListener('keydown', (e) => {
+        if (e.key && e.key.toLowerCase() === 'd') {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            if (themeBtn) themeBtn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem('san_sport_theme', isDark ? 'dark' : 'light');
+        }
+    });
+
+    // Small helper: set current year in any element with id="year" (common footer)
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Clickable images (fix selector)
     const clickableImgs = document.querySelectorAll('.clickable-img');
@@ -131,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!email.value.trim() || !isEmailValid(email.value.trim())) { createFeedback(email, 'Enter a valid email.'); valid = false; } else clearFeedback(email);
             if (!password.value.trim()) { createFeedback(password, 'Password is required.'); valid = false; } else clearFeedback(password);
 
-            if (valid) {
+            if (valid) {    
                 alert('Login successful (client-side).');
                 loginForm.reset();
                 [email, password].forEach(i => i && i.classList.remove('is-valid'));

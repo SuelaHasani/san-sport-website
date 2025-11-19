@@ -1,48 +1,72 @@
+/* Main stylesheet with explanatory comments
+   - This file contains global styles and page-specific blocks (about, shop, checkout).
+   - Comments explain purpose of each section so collaborators can read/modify safely.
+*/
+
+/* ----------------------
+   Base layout & typography
+   ---------------------- */
+/* Body sets site-wide font, background, and flex layout */
 body {
-            font-family: 'Avenir', Helvetica, Arial, sans-serif;
-            margin: 0;
-            background: whitesmoke;
-            display: flex;
-            flex-direction: column;
-            min-height: 100px;
-        }
-        
-        header {
-            background: linear-gradient(180deg,#0b1220 0%, #122033 100%);
-            color: #fff;
-            padding: 1px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 24px;
-            margin: 0;
-            text-align: center;
-        }
-        
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2px;
-        }
-        img {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif; /* readable system font stack */
+    margin: 0;
+    background: whitesmoke; /* page background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+}
+
+/* Header: top navigation bar visual */
+header {
+    background: linear-gradient(180deg,#0b1220 0%, #122033 100%); /* dark gradient */
+    color: #fff;
+    padding: 1px;
+    text-align: center;
+}
+
+/* Primary heading style used on pages */
+h1 {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Main area centers the content; many pages use .container inside to limit width */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+}
+
+/* Default image sizing (safe default) - overridden for responsive sections */
+img {
     width: 200px ;
     height: 200px ;
     display: block;
     float: top;
     align-items: center;
 }
+
+/* ----------------------
+   Header / navigation layout
+   ---------------------- */
+/* Container header uses flex to place brand left and nav right */
 .container header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 0;
 }
+
+/* Reinforce header visual gradient (kept here for clarity) */
 header {
     background: linear-gradient(180deg,#0b1220 0%, #122033 100%);
     color: #fff;
 }
+
+/* Nav alignment and spacing rules */
 header nav {
     display: flex;
     justify-content: flex-end;
@@ -50,6 +74,8 @@ header nav {
     gap: 1px;
     padding: 0.5px 0;
 }
+
+/* Navigation list reset and inline layout */
 header nav ul {
     list-style: none;
     margin: 0;
@@ -58,9 +84,8 @@ header nav ul {
     gap: 0.75px;
     align-items: center;
 }
-header nav li {
-    margin: 0;
-}
+
+/* Link visual: pill buttons in the nav */
 header nav li a {
     color: #dfe7ef;
     text-decoration: none;
@@ -72,67 +97,81 @@ header nav li a {
     display: inline-block;
     align-items: center;
 }
+
+/* Hover and active styles for nav items */
 header nav li a:hover,
 header nav li.active a {
     background: rgba(255,255,255,0.08);
     color: #fff;
     transform: translateY(-1px);
 }
+
+/* Responsive nav behavior on small screens (center the links) */
 @media (max-width: 640px) {
     header nav { justify-content: center; }
     header nav ul { gap: 0.4px; }
 }
+
+/* ----------------------
+   Main heading / cards (used on index/about)
+   ---------------------- */
+/* Generic card used for main-heading blocks */
 .main-heading > div {
-	background: #fff;
-	padding: 14px;
-	border-radius: 10px;
-	border: 1px solid rgba(11,18,32,0.06);
-	box-shadow: 0 8px 18px rgba(11,18,32,0.06);
-	max-width: 900px;
-	width: 100%;
-	margin: 0 auto 12px;
-	text-align: center;
-	display: block;
+    background: #fff;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(11,18,32,0.06);
+    box-shadow: 0 8px 18px rgba(11,18,32,0.06);
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto 12px;
+    text-align: center;
+    display: block;
 }
 
-
+/* Small inline images used inside main-heading (e.g. player photos) */
 .main-heading > div img {
-	display: inline-block;
-	margin: 6px;
-	width: 180px;
-	height: 120px;
-	object-fit: cover;
-	border-radius: 6px;
-	vertical-align: middle;
+    display: inline-block;
+    margin: 6px;
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    vertical-align: middle;
 }
 
-
+/* Responsive: stack images on narrow screens */
 @media (max-width: 640px) {
-	.main-heading > div img {
-		display: block;
-		width: 100%;
-		max-width: 320px;
-		height: auto;
-		margin-left: auto;
-		margin-right: auto;
-	}
+    .main-heading > div img {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-        
-        #about-intro, #about-mission, #about-team {
+/* ----------------------
+   About page helpers (centered sections)
+   ---------------------- */
+#about-intro, #about-mission, #about-team {
     text-align: center;
 }
 
+/* Links in about sections remain inline and centered */
 #about-intro a, #about-mission a, #about-team a {
     display: inline-block;
     text-align: center;
 }
 
+/* Spacing for intro/mission sections */
 #about-intro, #about-mission {
     padding: 20px;
     margin-bottom: 20px;
 }
 
+/* Team grid uses flex so members wrap nicely */
 #about-team {
     display: flex;
     flex-wrap: wrap;
@@ -140,6 +179,7 @@ header nav li.active a {
     padding: 20px;
 }
 
+/* Team member card visuals */
 .team-member {
     background: #fff;
     padding: 15px;
@@ -148,6 +188,7 @@ header nav li.active a {
     width: 200px;
 }
 
+/* Circular portrait for team members */
 .team-member img {
     width: 150px;
     height: 150px;
@@ -156,32 +197,33 @@ header nav li.active a {
     object-fit: cover;
 }
 
+/* Team member heading and bio */
 .team-member h2 {
     font-size: 18px;
     margin: 0 0 5px 0;
     color: #0b1220;
 }
-
 .team-member p {
     margin: 0;
     color: #666;
     font-size: 14px;
 }
 
+/* Team layout on small screens becomes centered stack */
 @media (max-width: 640px) {
     #about-team {
         justify-content: center;
     }
-    
     .team-member {
         width: 100%;
         max-width: 280px;
     }
 }
 
-.center-text .main-heading {
-    text-align: center;
-}
+/* ----------------------
+   Utility helpers & modes
+   ---------------------- */
+.center-text .main-heading { text-align: center; }
 
 .center-text .main-heading ul {
     list-style: none;
@@ -189,11 +231,10 @@ header nav li.active a {
     margin: 0.5rem 0;
 }
 
-.center-text .main-heading a {
-    display: inline-block;
-    text-align: center;
-}
-  .dark-mode {
+.center-text .main-heading a { display: inline-block; text-align: center; }
+
+/* Dark mode wrapper: toggled by main.js (adds .dark-mode to <body>) */
+.dark-mode {
     background-color: #0b132b;
     color: #e6eef8;
     transition: 0.3s;
@@ -203,9 +244,7 @@ header nav li.active a {
     background: linear-gradient(180deg,#071021 0%, #0b1830 100%);
 }
 
-.dark-mode header nav li a {
-    color: #cfe7ff;
-}
+.dark-mode header nav li a { color: #cfe7ff; }
 
 .dark-mode header nav li a:hover,
 .dark-mode header nav li.active a {
@@ -214,7 +253,7 @@ header nav li.active a {
     transform: translateY(-1px);
 }
 
-
+/* Dark surfaces (cards etc) */
 .dark-mode .main-heading,
 .dark-mode .main-heading > div,
 .dark-mode .team-member,
@@ -227,7 +266,7 @@ header nav li.active a {
     box-shadow: none;
 }
 
-
+/* Dark typography adjustments */
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode p,
@@ -238,7 +277,7 @@ header nav li.active a {
     color: #e6f3ff;
 }
 
-
+/* Dark form controls style */
 .dark-mode .form-control,
 .dark-mode input,
 .dark-mode textarea,
@@ -248,13 +287,14 @@ header nav li.active a {
     border: 1px solid rgba(255,255,255,0.06);
 }
 
-
+/* Primary button colour for dark mode */
 .dark-mode .btn-primary {
     background: #1b5f90;
     border-color: #164f74;
     color: #fff;
 }
 
+/* Generic dark mode button look */
 .dark-mode .btn,
 .dark-mode #theme-toggle {
     background: rgba(255,255,255,0.02);
@@ -262,14 +302,11 @@ header nav li.active a {
     border-color: rgba(255,255,255,0.06);
 }
 
-.dark-mode a {
-    color: #9fd0ff;
-}
+/* Dark link colours */
+.dark-mode a { color: #9fd0ff; }
+.dark-mode a:hover { color: #ffb6d5; }
 
-.dark-mode a:hover {
-    color: #ffb6d5;
-}
-
+/* Theme toggle button style */
 #theme-toggle {
     background: transparent;
     color: #dfe7ef;
@@ -280,39 +317,14 @@ header nav li.active a {
     font-weight: 600;
     margin-left: 12px;
 }
+#theme-toggle:hover { background: rgba(255,255,255,0.04); }
+.dark-mode #theme-toggle { color: #d9e8ff; border-color: rgba(255,255,255,0.06); }
+.dark-mode #theme-toggle:hover { background: rgba(255,255,255,0.02); }
 
-#theme-toggle:hover {
-    background: rgba(255,255,255,0.04);
-}
-
-.dark-mode #theme-toggle {
-    color: #d9e8ff;
-    border-color: rgba(255,255,255,0.06);
-}
-
-.dark-mode #theme-toggle:hover {
-    background: rgba(255,255,255,0.02);
-}
-
-@media (max-width: 640px) {
-	.main-heading > div {
-		flex-direction: column;
-	}
-	.main-heading > div img {
-		width: 100%;
-		max-width: 280px;
-		height: auto;
-	}
-}
-
-.clickable-img {
-    cursor: pointer;
-    transition: transform 0.12s ease, opacity 0.12s ease;
-}
-.clickable-img:hover {
-    transform: translateY(-3px) scale(1.02);
-    opacity: 0.98;
-}
+/* ----------------------
+   Slideshow / hero styles
+   ---------------------- */
+/* Slideshow container: central hero with rounded corners */
 .slideshow-container {
     position: relative;
     max-width: 900px;
@@ -323,22 +335,14 @@ header nav li.active a {
     overflow: hidden;
 }
 
-.slide {
-    display: none;
-    width: 100%;
-}
+/* Individual slide is hidden by default; .active shows it */
+.slide { display: none; width: 100%; }
+.slide.active { display: block; }
 
-.slide.active {
-    display: block;
-}
+/* Slide image sizing and object-fit for consistent crop */
+.slide img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-.slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
+/* Prev/Next arrows styling (positioned centrally left/right) */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -355,57 +359,30 @@ header nav li.active a {
     user-select: none;
     transition: 0.3s ease;
 }
+.next { right: 0; }
+.prev { left: 0; }
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
 
-.next {
-    right: 0;
-}
+/* Dots indicator below slideshow */
+.dots { text-align: center; padding: 20px; }
+.dot { cursor: pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease; }
+.dot.active { background-color: #0b1220; }
 
-.prev {
-    left: 0;
-}
+/* Dark-mode slideshow tweaks */
+.dark-mode .slideshow-container { background: #071226; box-shadow: none; }
+.dark-mode .dot.active { background-color: #e6f3ff; }
 
-.prev:hover, .next:hover {
-    background: rgba(0,0,0,0.8);
-}
-
-.dots {
-    text-align: center;
-    padding: 20px;
-}
-
-.dot {
-    cursor: pointer;
-    height: 12px;
-    width: 12px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active {
-    background-color: #0b1220;
-}
-
-.dark-mode .slideshow-container {
-    background: #071226;
-    box-shadow: none;
-}
-
-.dark-mode .dot.active {
-    background-color: #e6f3ff;
-}
-
-
-
-
+/* ----------------------
+   Shop grid & product cards
+   ---------------------- */
+/* Responsive product grid used on shop.html */
 .shop-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
+/* Individual product card visuals */
 .item {
     background: #fff;
     padding: 20px;
@@ -413,12 +390,9 @@ header nav li.active a {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
 }
+.item img { width: 100%; border-radius: 10px; }
 
-.item img {
-    width: 100%;
-    border-radius: 10px;
-}
-
+/* Add-to-cart button visuals */
 .add-btn {
     margin-top: 10px;
     background: #0066ff;
@@ -428,10 +402,9 @@ header nav li.active a {
     cursor: pointer;
     border-radius: 6px;
 }
-.add-btn:hover {
-    background: #0047b3;
-}
+.add-btn:hover { background: #0047b3; }
 
+/* Inline cart panel style for pages that show an embedded cart (#cart) */
 #cart {
     margin-top: 40px;
     background: #fff;
@@ -439,12 +412,9 @@ header nav li.active a {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+#cart ul { list-style: none; padding: 0; }
 
-#cart ul {
-    list-style: none;
-    padding: 0;
-}
-
+/* Remove button for each cart item */
 .remove-btn {
     background: red;
     color: white;
@@ -454,11 +424,11 @@ header nav li.active a {
     border-radius: 4px;
     cursor: pointer;
 }
-.remove-btn:hover {
-    background: darkred;
-}
+.remove-btn:hover { background: darkred; }
 
-/* Checkout modal */
+/* ----------------------
+   Checkout modal (simple)
+   ---------------------- */
 .checkout-modal {
     position: fixed;
     top: 0;
@@ -470,7 +440,6 @@ header nav li.active a {
     justify-content: center;
     align-items: center;
 }
-
 .checkout-box {
     background: white;
     padding: 25px;
@@ -478,7 +447,6 @@ header nav li.active a {
     width: 300px;
     text-align: center;
 }
-
 .checkout-btn {
     margin-top: 15px;
     background: #28a745;
@@ -488,11 +456,11 @@ header nav li.active a {
     border-radius: 6px;
     cursor: pointer;
 }
-.checkout-btn:hover {
-    background: #1d7e33;
-}
+.checkout-btn:hover { background: #1d7e33; }
 
-/* Checkout page additions (appended) */
+/* ----------------------
+   Checkout page layout (order summary + form)
+   ---------------------- */
 .checkout-main { padding: 16px 0 40px; }
 .checkout-grid { display: grid; grid-template-columns: 360px 1fr; gap: 18px; align-items: start; }
 .checkout-cart { background: #fff; padding: 14px; border-radius: 10px; box-shadow: 0 6px 18px rgba(11,18,32,0.06); }
@@ -509,12 +477,12 @@ header nav li.active a {
 .checkout-message.success { background:#e6ffef; color:#0b7a3b; border:1px solid #c7efda; }
 .checkout-message.error { background:#ffecec; color:#8b2323; border:1px solid #f2c2c2; }
 
-/* small screens */
+/* Responsive stack for checkout on narrow screens */
 @media (max-width: 840px) {
   .checkout-grid { grid-template-columns: 1fr; }
   .checkout-cart { order: 2; }
   .checkout-form { order: 1; }
 }
 
-/* input error */
+/* Visual indicator for invalid inputs used by validation.js */
 .input-error { border-color: #d9534f !important; box-shadow: 0 0 0 3px rgba(217,83,79,0.06); }
